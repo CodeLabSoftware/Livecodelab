@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>Livecodelab</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+        <script src="js_compiled/jquery.min.js"></script>
+        <script src="js_compiled/coffee-script.js"></script>
+
+        <script src="js/sooperfish-menu/jquery.easing-sooper.js"></script>
+        <script src="js/sooperfish-menu/jquery.sooperfish.js"></script>
+
+        <script src="js_compiled/three.min.js"></script>
+
+        <script src="js_compiled/codemirror.js"></script>
+
+        <script src='js_compiled/jquery.simplemodal.1.4.3.min.js'></script>
+        
+        <link rel='stylesheet' type='text/css' href='css_compiled/main.css'/>
+
+        <script src="js_compiled/Livecodelab-minified.js"></script>
+        
+
+
+    </head>
+    <body>
+
+        <!--  menu -->
+        <div class="menubar" style="background-color:black; position: fixed;  z-index:4; top: 0px; left: 0px; width:100%">
+          <ul class="sf-menu" id="nav">
+          </ul>
+        </div>
+        <!-- end of menu -->
+
+        <div class="verticalMiddleOfScreen" id="toMove" style="font-size:30em;">
+            <div class="fakeAnimationContent">
+                <p id="caption"></p>
+            </div>
+        </div>
+        <div class="verticalMiddleOfScreen" id="justForFakeCursor" style="font-size:30em;">
+            <div class="fakeAnimationContent">
+                <p id="fakeStartingBlinkingCursor">TYPE!</p>
+            </div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='/css/images/simpleModal/x.png' alt='' />
+        </div>
+
+        <div id='startingCourtainScreen' style='width:100%; height:100%; background-color:white; position: absolute;  z-index:4; top: 0px; left: 0px;'>
+            <div class="verticalMiddleOfScreen" id="loading" style="font-size:3em; color: red">
+                Gleich geht's los!
+            </div>
+        </div>
+
+
+        <!-- modal content -->
+        <div id="aboutWindow">
+            <h3>Was soll das?</h3>
+            <p>
+                Livecodelab ist ein kleines Tool, in dem jeder ganz einfachen Code eingeben (oder kopieren) und sofort die Auswirkungen sehen kann.
+                <br>
+                <br>
+                Wenn du hiermit noch nicht vertraut bist, mach doch das Tutorial oder schau dir die Demos an!
+            </p>
+            <p>Du willst mehr von uns? <a href="http://www.bit.ly/CodeLab"> Besuch uns!</a></p>
+            <p>Offline nutzen? <a href="https://bit.ly/CodeLab">Lade dir das DevCenter!</a></p>
+        </div>
+
+        <div id="noWebGLMessage">
+            <h3>Retro?</h3>
+            <p>Dein Browser unterstützt leider nicht alle 3D-Sachen.</p>
+            <p>Entweder ist er zu alt, oder du hast Internet Explorer. Daher solltest du dir jetzt <a href="http://www.khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" target="_blank">einen neuen Browser zulegen</a>. Wenn du im DevCenter bist, ist es ganz normal, dass diese Meldung kommt.</p>
+            <p>(Es lohnt sich!) </p>
+        </div>
+
+        <div id="exampleNeedsWebgl">
+            <h3>Haaalt Stop!</h3>
+            <p>Diese Demo wird in deinem Browser oder im DevCenter leider nicht laufen. Das liegt daran, dass dein Browser kein WebGL unterstützt. Oder du hast Internet Explorer.</p>
+            <p>Worauf wartest du noch? <a href="http://www.khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" target="_blank">Hol dir jetzt einen neuen Browser</a>!</p>
+        </div>
+
+        <div id="noAudioMessage">
+            <h3>Wie bitte?</h3>
+            <p>Dein Browser ist wahrscheinlich taub. Oder, um es korrekt auszudrücken: er unterstützt leider keine Audioausgabe.</p>
+            <p>Rette die Welt und <a href="http://browsehappy.com/" target="_blank">lade einen neuen Browser</a>!</p>
+            <p>(Hol dir am besten einen, der WebGL unterstützt, wie zum Beispiel Chrome oder Firefox. Aber nicht Internet Explorer.)</p>
+        </div>
+
+        <div id="soundSystemIsMangledMessage">
+            <h3>Herzlichen Glückwunsch!</h3>
+            <p>Du hast soeben das Sound System geschrottet und desshalb das Anchievement "Ich hab das Sound System geschrottet" erhalten!</p>
+            <p>Das passiert, wenn man ZU viel Sounds abspielt.</p>
+            <p>Lade diese Seite einfach neu, und alles ist wieder beim Alten.</p>
+            <p>(Es macht Spaß, unwissende User zu verunsichern!)</p>
+        </div>
+
+        <div id="noCanvasMessage">
+            <h3>Ach du Sch...</h3>
+            <p>Dein Browser ist wirklich SEHR alt.</p>
+            <p>Aber bei 5 Jahre alter Software ist das kein Wunder. Das gilt auch für Internet Explorer. Aber warum <a href="http://browsehappy.com/" target="_blank">testest du nicht mal was neues</a>?</p>
+            <p>(Hol dir am besten einen mit WebGL, etwa Chrome oder Firefox.)</p>
+        </div>
+
+
+        <div id="miao" style="position: fixed;  top: 30px; left: 0px; width: 100%; font-size: 3em;">
+
+            <canvas id="backGroundCanvas" style="position: absolute; z-index:-3; top: 0px; left: 0px; width:100% height:100%"></canvas> 
+            <canvas id="blendedThreeJsSceneCanvas" style="width:100%; height:100%; position: absolute;  z-index:-2; top: 0px; left: 0px;"></canvas> 
+
+            <form action='' id="formCode">
+                <textarea id="code" name="code" style="z-index:1;"></textarea>
+            </form>
+
+        </div>
+
+    </body>
+</html>
